@@ -1,0 +1,50 @@
+﻿@model IEnumerable<IT_ELECTIVE_PREFINALS_PROJECT.Models.Team>
+
+@{
+    ViewData["Title"] = "Teams";
+}
+
+<div class="container mt-4">
+    <h1>Teams</h1>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Team Name</th>
+                <th>Department</th>
+                <th>Team Members</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var team in Model)
+            {
+                <tr>
+                    <td>@team.Name</td>
+
+                    <td>
+                        @team.Department?.Name
+                    </td>
+
+                    <td>
+                        @if (team.TeamMembers != null && team.TeamMembers.Any())
+                        {
+                            <ul>
+                                @foreach (var member in team.TeamMembers)
+                                {
+                                    <li>
+                                        @member.Employee?.FirstName @member.Employee?.LastName
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <span>No members assigned</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
