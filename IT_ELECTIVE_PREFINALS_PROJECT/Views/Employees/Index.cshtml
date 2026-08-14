@@ -1,4 +1,4 @@
-﻿@model IEnumerable<IT_ELECTIVE_PREFINALS_PROJECT.Models.Employee>
+@model IEnumerable<IT_ELECTIVE_PREFINALS_PROJECT.Models.Employee>
 
 <h2>Employees</h2>
 
@@ -9,7 +9,7 @@
             <th>Email</th>
             <th>Job Title</th>
             <th>Department</th>
-            <th>Active</th>
+            <th>Status</th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +20,16 @@
                 <td>@item.Email</td>
                 <td>@item.JobTitle</td>
                 <td>@item.Department.Name</td>
-                <td>@item.IsActive</td>
+                <td>
+                    @if (item.IsActive)
+                    {
+                        <span class="badge bg-success">Active</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">Inactive</span>
+                    }
+                </td>
             </tr>
         }
     </tbody>
